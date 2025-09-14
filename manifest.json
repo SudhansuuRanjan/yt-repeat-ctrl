@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Repeat Controls",
+  "version": "1.0",
+  "description": "Adds repeat once and repeat toggle buttons to YouTube player.",
+
+  "icons": {
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png",
+    "100": "icons/icon100.png"
+  },
+
+  "action": {
+    "default_icon": {
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    },
+    "default_title": "YouTube Repeat Controls"
+  },
+
+  "permissions": [
+    "declarativeContent"
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
