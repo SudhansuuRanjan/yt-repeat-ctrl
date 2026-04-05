@@ -1,0 +1,201 @@
+/* ============================================================
+   YouTube Repeat Controls — Injected Styles
+   ============================================================ */
+
+/* ---------- Shared button baseline ---------- */
+#yt-repeat-once,
+#yt-repeat-toggle,
+#yt-ab-a,
+#yt-ab-b,
+#yt-sleep-timer-btn {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative;
+  cursor: pointer;
+}
+
+/* ---------- Repeat Count Badge ---------- */
+.yt-repeat-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: #ff4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  pointer-events: none;
+  font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+  z-index: 10;
+}
+
+/* ---------- A-B Loop Button Labels ---------- */
+.yt-ab-label {
+  font-size: 15px;
+  font-weight: 700;
+  font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+/* When active, shrink font to fit the timestamp (e.g. "A 1:23") */
+#yt-ab-a.yt-ab-active .yt-ab-label,
+#yt-ab-b.yt-ab-active .yt-ab-label {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+#yt-ab-a.yt-ab-active,
+#yt-ab-b.yt-ab-active {
+  color: #3ea6ff !important;
+}
+
+/* ---------- Tooltip ---------- */
+.yt-rc-tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 8px;
+  padding: 5px 9px;
+  background: rgba(28, 28, 28, 0.9);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  animation: yt-rc-fade-in 0.15s ease forwards;
+}
+
+@keyframes yt-rc-fade-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* ---------- Sleep Timer Panel ---------- */
+.yt-sleep-panel {
+  /* position and coordinates set dynamically by JS via getBoundingClientRect */
+  position: fixed;
+  width: 220px;
+  background: rgba(28, 28, 28, 0.97);
+  border-radius: 8px;
+  padding: 14px;
+  color: #fff;
+  font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  z-index: 99999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: yt-rc-fade-in 0.15s ease forwards;
+}
+
+.yt-sleep-panel-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.yt-sleep-panel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.yt-sleep-panel-row label {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.yt-sleep-panel-row input[type="number"] {
+  width: 50px;
+  padding: 4px 6px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  background: #222;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  outline: none;
+}
+
+.yt-sleep-panel-row input[type="number"]:focus {
+  border-color: #3ea6ff;
+}
+
+.yt-sleep-panel-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.yt-sleep-btn {
+  flex: 1;
+  padding: 6px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.yt-sleep-btn-start {
+  background: #3ea6ff;
+  color: #0d0d0d;
+}
+
+.yt-sleep-btn-start:hover {
+  background: #65b8ff;
+}
+
+.yt-sleep-btn-cancel {
+  background: #444;
+  color: #fff;
+}
+
+.yt-sleep-btn-cancel:hover {
+  background: #555;
+}
+
+/* Active sleep timer indicator */
+#yt-sleep-timer-btn.yt-sleep-active {
+  color: #3ea6ff !important;
+}
+
+/* ---------- Notification ---------- */
+.yt-rc-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: rgba(28, 28, 28, 0.95);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "YouTube Noto", Roboto, Arial, Helvetica, sans-serif;
+  border-radius: 8px;
+  z-index: 99999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  animation: yt-rc-notif 2.5s ease forwards;
+}
+
+@keyframes yt-rc-notif {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  10%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}

@@ -1,8 +1,10 @@
 {
   "manifest_version": 3,
   "name": "YouTube Repeat Controls",
-  "version": "1.0",
-  "description": "Adds repeat once and repeat toggle buttons to YouTube player.",
+  "version": "2.0",
+  "description": "Adds repeat, A-B loop, sleep timer, and more to the YouTube player.",
+
+  "permissions": ["storage"],
 
   "icons": {
     "32": "icons/icon32.png",
@@ -19,18 +21,11 @@
     "default_title": "YouTube Repeat Controls"
   },
 
-  "permissions": [
-    "declarativeContent"
-  ],
-
-  "background": {
-    "service_worker": "background.js"
-  },
-
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/*"],
-      "js": ["content.js"]
+      "matches": ["*://www.youtube.com/*", "*://youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
     }
   ]
 }
