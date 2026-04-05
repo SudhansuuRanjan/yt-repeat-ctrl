@@ -44,13 +44,15 @@
   }
 
   // ──────────────────── Persistence ────────────────────
+  const extAPI = typeof browser !== "undefined" ? browser : chrome;
+
   function saveState() {
     const vid = getVideoId();
     if (!vid) return;
     const key = `yt-rc-${vid}`;
     const data = { repeatMode, abLoop, sleepConfig };
     try {
-      chrome.storage.local.set({ [key]: data });
+      extAPI.storage.local.set({ [key]: data });
     } catch (_) { /* extension context may be invalidated */ }
   }
 
@@ -59,7 +61,7 @@
     if (!vid) { callback(); return; }
     const key = `yt-rc-${vid}`;
     try {
-      chrome.storage.local.get(key, (result) => {
+      extAPI.storage.local.get([key], (result) => {
         const data = result[key];
         if (data) {
           repeatMode = data.repeatMode || "none";

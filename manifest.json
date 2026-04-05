@@ -4,6 +4,12 @@
   "version": "2.0",
   "description": "Adds repeat, A-B loop, sleep timer, and more to the YouTube player.",
 
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "yt-repeat-controls@sudhranj.com",
+      "strict_min_version": "109.0"
+    }
+  },
   "permissions": ["storage"],
 
   "icons": {
@@ -23,7 +29,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/*", "*://youtube.com/*"],
+      "matches": ["*://*.youtube.com/*", "*://youtube.com/*"],
       "js": ["content.js"],
       "css": ["styles.css"]
     }
